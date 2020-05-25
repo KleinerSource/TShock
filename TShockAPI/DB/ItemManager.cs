@@ -215,7 +215,7 @@ namespace TShockAPI.DB
 				}
 				if (traversed.Contains(cur))
 				{
-					throw new InvalidOperationException("Infinite group parenting ({0})".SFormat(cur.Name));
+					throw new InvalidOperationException("无限父组循环. 检查组配置 ({0})".SFormat(cur.Name));
 				}
 				traversed.Add(cur);
 				cur = cur.Parent;

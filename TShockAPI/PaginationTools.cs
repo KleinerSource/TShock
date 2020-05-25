@@ -280,7 +280,7 @@ namespace TShockAPI
 			if (!int.TryParse(pageNumberRaw, out pageNumber) || pageNumber < 1)
 			{
 				if (errorMessageReceiver != null)
-					errorMessageReceiver.SendErrorMessage("\"{0}\" is not a valid page number.", pageNumberRaw);
+					errorMessageReceiver.SendErrorMessage("页码编号\"{0}\"无效. ", pageNumberRaw);
 
 				pageNumber = 1;
 				return false;

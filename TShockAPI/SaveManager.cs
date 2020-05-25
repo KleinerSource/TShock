@@ -55,11 +55,11 @@ namespace TShockAPI
 				// These can be caused by an unexpected error such as a bad or out of date plugin
 				try
 				{
-					TShock.Utils.Broadcast("Saving world...", Color.Yellow);
+					TShock.Utils.Broadcast("正在保存世界地图数据, 可能会造成片刻的卡顿.", Color.Yellow);
 				}
 				catch (Exception ex)
 				{
-					TShock.Log.Error("World saved notification failed");
+					TShock.Log.Error("保存时的通知失败.");
 					TShock.Log.Error(ex.ToString());
 				}
 			}
@@ -132,13 +132,13 @@ namespace TShockAPI
 									WorldFile.SaveWorld(task.resetTime);
 
 								if (TShock.Config.AnnounceSave)
-									TShock.Utils.Broadcast("World saved.", Color.Yellow);
+									TShock.Utils.Broadcast("地图数据保存完毕.", Color.Yellow);
 
-								TShock.Log.Info(string.Format("World saved at ({0})", Main.worldPathName));
+									TShock.Log.Info(string.Format("地图数据保存在路径 ({0})", Main.worldPathName));
 							}
 							catch (Exception e)
 							{
-								TShock.Log.Error("World saved failed");
+								TShock.Log.Error("地图保存失败.");
 								TShock.Log.Error(e.ToString());
 							}
 						}

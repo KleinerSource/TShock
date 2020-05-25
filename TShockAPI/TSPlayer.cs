@@ -869,7 +869,7 @@ namespace TShockAPI
 			{
 				if (HasPermission(Permissions.bypassssc))
 				{
-					TShock.Log.ConsoleInfo("Skipping SSC Backup for " + Account.Name); // Debug Code
+					TShock.Log.ConsoleInfo(Account.Name + "跳过了云端存档保存。"); // Debug Code
 					return true;
 				}
 				PlayerData.CopyCharacter(this);
@@ -1125,7 +1125,7 @@ namespace TShockAPI
 		/// <param name="args"></param>
 		public void TempGroupTimerElapsed(object sender, ElapsedEventArgs args)
 		{
-			SendWarningMessage("Your temporary group access has expired.");
+			SendWarningMessage("你的临时组已经到期.");
 
 			tempGroup = null;
 			if (sender != null)
@@ -1565,11 +1565,11 @@ namespace TShockAPI
 					{
 						if (flags.HasFlag(DisableFlags.WriteToLog))
 						{
-							TShock.Log.ConsoleInfo("Player {0} has been disabled for {1}.", Name, reason);
+							TShock.Log.ConsoleInfo("玩家 {0} 被冻结. 原因: {1}.", Name, reason);
 						}
 						else
 						{
-							Server.SendInfoMessage("Player {0} has been disabled for {1}.", Name, reason);
+							Server.SendInfoMessage("玩家 {0} 被冻结. 原因: {1}.", Name, reason);
 						}
 					}
 
@@ -1676,7 +1676,7 @@ namespace TShockAPI
 			var time2 = (int)time;
 			var launch = DateTime.UtcNow;
 			var startname = Name;
-			SendInfoMessage("You are now being annoyed.");
+			SendInfoMessage("你被骚扰了.");
 			while ((DateTime.UtcNow - launch).TotalSeconds < time2 && startname == Name)
 			{
 				SendData(PacketTypes.NpcSpecial, number: Index, number2: 2f);

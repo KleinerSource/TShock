@@ -28,22 +28,22 @@ namespace TShockAPI.ServerSideCharacters
 {
 	public class ServerSideConfig
 	{
-		[Description("Enable server side characters, This stops the client from saving character data! EXPERIMENTAL!!!!!")]
+		[Description("打开云端存档(SSC)模式, 开启后客户端无法保存! 实验性!!!!!")]
 		public bool Enabled = false;
 
-		[Description("How often SSC should save, in minutes.")]
+		[Description("SSC保存的间隔, 单位为分钟.")]
 		public int ServerSideCharacterSave = 5;
 
-		[Description("Time, in milliseconds, to disallow discarding items after logging in when ServerSideInventory is ON.")]
+		[Description("单位为毫秒的时间间隔, 防止玩家在登录后丢弃物品.")]
 		public int LogonDiscardThreshold = 250;
 
-		[Description("The starting default health for new SSC.")] 
+		[Description("新玩家SSC存档的生命值.")]
 		public int StartingHealth = 100;
 
-		[Description("The starting default mana for new SSC.")] 
+		[Description("新玩家SSC存档的魔法值.")]
 		public int StartingMana = 20;
 
-		[Description("The starting default inventory for new SSC.")] 
+		[Description("新玩家SSC存档的初始物品.")]
 		public List<NetItem> StartingInventory = new List<NetItem>();
 
 		public static ServerSideConfig Read(string path)

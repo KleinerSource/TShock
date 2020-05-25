@@ -268,7 +268,7 @@ namespace MaxMind
 		private long AddressToLong(IPAddress ip)
 		{
 			if (ip.AddressFamily != AddressFamily.InterNetwork)
-				throw new InvalidOperationException("IP address is not IPv4");
+				throw new InvalidOperationException("IP地址非IPv4.");
 
 			long num = 0;
 			byte[] bytes = ip.GetAddressBytes();
@@ -290,7 +290,7 @@ namespace MaxMind
 			byte[] buffer = new byte[6]; // 2 * MAX_RECORD_LENGTH
 			long[] x = new long[2];
 			if (depth < 0)
-				throw new IOException("Cannot seek GeoIP database");
+				throw new IOException("无法读取IP数据库.");
 
 			_geodata.Seek(6*offset, SeekOrigin.Begin);
 			_geodata.Read(buffer, 0, 6);

@@ -2583,13 +2583,13 @@ namespace TShockAPI
 						args.Player.IsDisabledForBannedWearable = false;
 
 
-					args.Player.SendMessage("Authenticated as " + args.Player.Name + " successfully.", Color.LimeGreen);
-					TShock.Log.ConsoleInfo(args.Player.Name + " authenticated successfully as user " + args.Player.Name + ".");
+					args.Player.SendMessage(args.Player.Name + "登录完毕。", Color.LimeGreen);
+					TShock.Log.ConsoleInfo(args.Player.Name + "验证登录完毕。");
 					TShock.UserAccounts.SetUserAccountUUID(account, args.Player.UUID);
 					Hooks.PlayerHooks.OnPlayerPostLogin(args.Player);
 					return true;
 				}
-				args.Player.Kick("Your password did not match this character's password.", true, true);
+				args.Player.Kick("密码错误。", true, true);
 				return true;
 			}
 
@@ -2603,7 +2603,7 @@ namespace TShockAPI
 					NetMessage.SendData((int)PacketTypes.WorldInfo, args.Player.Index);
 					return true;
 				}
-				args.Player.Kick("Invalid server password.", true, true);
+				args.Player.Kick("服务器密码错误.", true, true);
 				return true;
 			}
 

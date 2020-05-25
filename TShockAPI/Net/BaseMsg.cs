@@ -26,7 +26,7 @@ namespace TShockAPI.Net
 	{
 		public virtual PacketTypes ID
 		{
-			get { throw new NotImplementedException("Msg ID not implemented"); }
+			get { throw new NotImplementedException("Msg ID 未在子类中实现."); }
 		}
 
 		public void PackFull(Stream stream)

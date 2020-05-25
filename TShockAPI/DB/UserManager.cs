@@ -215,7 +215,7 @@ namespace TShockAPI.DB
 			}
 			catch (Exception ex)
 			{
-				TShock.Log.ConsoleError("FetchHashedPasswordAndGroup SQL returned an error: " + ex);
+				TShock.Log.ConsoleError("读取用户密文密码过程出现数据库异常.: " + ex);
 			}
 			return -1;
 		}
@@ -492,7 +492,7 @@ namespace TShockAPI.DB
 			}
 			catch (FormatException)
 			{
-				TShock.Log.ConsoleError("Warning: Not upgrading work factor because bcrypt hash in an invalid format.");
+				TShock.Log.ConsoleError("警告: 没有升级WorkFactor. 解决: Bcrypt hash 无效格式.");
 				return;
 			}
 
@@ -515,7 +515,7 @@ namespace TShockAPI.DB
 		{
 			if (password.Trim().Length < Math.Max(4, TShock.Config.MinimumPasswordLength))
 			{
-				throw new ArgumentOutOfRangeException("password", "Password must be > " + TShock.Config.MinimumPasswordLength + " characters.");
+				throw new ArgumentOutOfRangeException("password", "密码长度必须大于 " + TShock.Config.MinimumPasswordLength + " 个字符.");
 			}
 			try
 			{
@@ -523,7 +523,7 @@ namespace TShockAPI.DB
 			}
 			catch (ArgumentOutOfRangeException)
 			{
-				TShock.Log.ConsoleError("Invalid BCrypt work factor in config file! Creating new hash using default work factor.");
+				TShock.Log.ConsoleError("配置文件中BCrypt work factor无效! 已经使用默认因数生成散列.");
 				Password = BCrypt.Net.BCrypt.HashPassword(password.Trim());
 			}
 		}
@@ -535,7 +535,7 @@ namespace TShockAPI.DB
 		{
 			if (password.Trim().Length < Math.Max(4, TShock.Config.MinimumPasswordLength))
 			{
-				throw new ArgumentOutOfRangeException("password", "Password must be > " + TShock.Config.MinimumPasswordLength + " characters.");
+				throw new ArgumentOutOfRangeException("password","密码长度必须大于 " + TShock.Config.MinimumPasswordLength + " 个字符.");
 			}
 			Password = BCrypt.Net.BCrypt.HashPassword(password.Trim(), workFactor);
 		}
@@ -564,7 +564,7 @@ namespace TShockAPI.DB
 				throw new NullReferenceException("bytes");
 			Func<HashAlgorithm> func;
 			if (!HashTypes.TryGetValue(TShock.Config.HashAlgorithm.ToLower(), out func))
-				throw new NotSupportedException("Hashing algorithm {0} is not supported".SFormat(TShock.Config.HashAlgorithm.ToLower()));
+				throw new NotSupportedException("不支持散列算法 {0} .".SFormat(TShock.Config.HashAlgorithm.ToLower()));
 
 			using (var hash = func())
 			{
@@ -679,7 +679,7 @@ namespace TShockAPI.DB
 		/// <param name="name">The name of the user account that already exists.</param>
 		/// <returns>A UserAccountExistsException object with the user's name passed in the message.</returns>
 		public UserAccountExistsException(string name)
-			: base("User account '" + name + "' already exists")
+			: base("账户 '" + name + "' 已存在")
 		{
 		}
 	}
@@ -692,7 +692,7 @@ namespace TShockAPI.DB
 		/// <param name="name">The user account name to be pasesd in the message.</param>
 		/// <returns>A new UserAccountNotExistException object with a message containing the user account name that does not exist.</returns>
 		public UserAccountNotExistException(string name)
-			: base("User account '" + name + "' does not exist")
+			: base("账户 '" + name + "' 不存在")
 		{
 		}
 	}
@@ -705,7 +705,7 @@ namespace TShockAPI.DB
 		/// <param name="group">The group name.</param>
 		/// <returns>A new GroupNotExistsException with the group that does not exist's name in the message.</returns>
 		public GroupNotExistsException(string group)
-			: base("Group '" + group + "' does not exist")
+			: base("用户组 '" + group + "' 不存在")
 		{
 		}
 	}

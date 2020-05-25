@@ -92,13 +92,13 @@ namespace Rests
 
 		public override object Execute(RestVerbs verbs, IParameterCollection parameters, IRequest request, IHttpContext context)
 		{
-			return new RestObject("401") { Error = "Not authorized. The specified API endpoint requires a token." };
+			return new RestObject("401") { Error = "未验证. 指定的API端点需要验证TOKEN." };
 		}
 
 		public object Execute(RestVerbs verbs, IParameterCollection parameters, SecureRest.TokenData tokenData, IRequest request, IHttpContext context)
 		{
 			if (tokenData.Equals(SecureRest.TokenData.None))
-				return new RestObject("401") { Error = "Not authorized. The specified API endpoint requires a token." };
+				return new RestObject("401") { Error = "未验证. 指定的API端点需要验证TOKEN." };
 
 			return callback(new RestRequestArgs(verbs, parameters, request, tokenData, context));
 		}

@@ -139,23 +139,23 @@ namespace TShockAPI
 						// We need to tell them they were disabled and why, then revert the change.
 						if (args.Player.IsDisabledForStackDetection)
 						{
-							args.Player.SendErrorMessage("Disabled. You went too far with hacked item stacks.");
+							args.Player.SendErrorMessage("禁止. 你坏事做得太过分了.");
 						}
 						else if (args.Player.IsDisabledForBannedWearable)
 						{
-							args.Player.SendErrorMessage("Disabled. You went too far with banned armor.");
+							args.Player.SendErrorMessage("禁止. 你带着违禁装备走得太远了.");
 						}
 						else if (args.Player.IsDisabledForSSC)
 						{
-							args.Player.SendErrorMessage("Disabled. You need to {0}login to load your saved data.", TShock.Config.CommandSpecifier);
+							args.Player.SendErrorMessage("禁止. 您需要 {0}login (/登录)才能加载保存数据.", TShock.Config.CommandSpecifier);
 						}
 						else if (TShock.Config.RequireLogin && !args.Player.IsLoggedIn)
 						{
-							args.Player.SendErrorMessage("Account needed! Please {0}register or {0}login to play!", TShock.Config.CommandSpecifier);
+							args.Player.SendErrorMessage("需要登录! 请 {0}register (/注册)或 {0}login (/登录)开始游戏!", TShock.Config.CommandSpecifier);
 						}
 						else if (args.Player.IsDisabledPendingTrashRemoval)
 						{
-							args.Player.SendErrorMessage("You need to rejoin to ensure your trash can is cleared!");
+							args.Player.SendErrorMessage("你需要重新加入游戏以确保你的垃圾桶被清除!");
 						}
 
 						// ??

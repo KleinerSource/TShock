@@ -235,7 +235,7 @@ namespace TShockAPI.DB
 
 			if (player.HasPermission(Permissions.bypassssc))
 			{
-				TShock.Log.ConsoleInfo("Skipping SSC Backup for " + player.Account.Name); // Debug code
+				TShock.Log.ConsoleInfo(player.Account.Name + "跳过了云端存档保存。"); // Debug code
 				return true;
 			}
 

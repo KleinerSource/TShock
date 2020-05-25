@@ -105,7 +105,7 @@ namespace TShockAPI
 		{
 			TSPlayer.All.SendMessage(msg, red, green, blue);
 			TSPlayer.Server.SendMessage(msg, red, green, blue);
-			TShock.Log.Info(string.Format("Broadcast: {0}", msg));
+			TShock.Log.Info(string.Format("通知: {0}", msg));
 		}
 
 		/// <summary>>Broadcast - Broadcasts a message to all players on the server, as well as the server console, and the logs.</summary>
@@ -128,7 +128,7 @@ namespace TShockAPI
 		{
 			TSPlayer.All.SendMessageFromPlayer(msg, red, green, blue, ply);
 			TSPlayer.Server.SendMessage(Main.player[ply].name + ": " + msg, red, green, blue);
-			TShock.Log.Info(string.Format("Broadcast: {0}", Main.player[ply].name + ": " + msg));
+			TShock.Log.Info(string.Format("通知: {0}", Main.player[ply].name + ": " + msg));
 		}
 
 		/// <summary>
@@ -457,8 +457,8 @@ namespace TShockAPI
 		/// Stops the server after kicking all players with a reason message, and optionally saving the world
 		/// </summary>
 		/// <param name="save">bool perform a world save before stop (default: true)</param>
-		/// <param name="reason">string reason (default: "Server shutting down!")</param>
-		public void StopServer(bool save = true, string reason = "Server shutting down!")
+		/// <param name="reason">string reason (default: "服务器已关闭!")</param>
+		public void StopServer(bool save = true, string reason = "服务器已关闭!")
 		{
 			TShock.ShuttingDown = true;
 
