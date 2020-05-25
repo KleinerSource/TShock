@@ -139,23 +139,23 @@ namespace TShockAPI
 						// We need to tell them they were disabled and why, then revert the change.
 						if (args.Player.IsDisabledForStackDetection)
 						{
-							args.Player.SendErrorMessage("½ûÖ¹. Äã»µÊÂ×öµÃÌ«¹ı·ÖÁË.");
+							args.Player.SendErrorMessage("ç¦æ­¢. ä½ åäº‹åšå¾—å¤ªè¿‡åˆ†äº†.");
 						}
 						else if (args.Player.IsDisabledForBannedWearable)
 						{
-							args.Player.SendErrorMessage("½ûÖ¹. Äã´ø×ÅÎ¥½û×°±¸×ßµÃÌ«Ô¶ÁË.");
+							args.Player.SendErrorMessage("ç¦æ­¢. ä½ å¸¦ç€è¿ç¦è£…å¤‡èµ°å¾—å¤ªè¿œäº†.");
 						}
 						else if (args.Player.IsDisabledForSSC)
 						{
-							args.Player.SendErrorMessage("½ûÖ¹. ÄúĞèÒª {0}login (/µÇÂ¼)²ÅÄÜ¼ÓÔØ±£´æÊı¾İ.", TShock.Config.CommandSpecifier);
+							args.Player.SendErrorMessage("ç¦æ­¢. æ‚¨éœ€è¦ {0}login (/ç™»å½•)æ‰èƒ½åŠ è½½ä¿å­˜æ•°æ®.", TShock.Config.CommandSpecifier);
 						}
 						else if (TShock.Config.RequireLogin && !args.Player.IsLoggedIn)
 						{
-							args.Player.SendErrorMessage("ĞèÒªµÇÂ¼! Çë {0}register (/×¢²á)»ò {0}login (/µÇÂ¼)¿ªÊ¼ÓÎÏ·!", TShock.Config.CommandSpecifier);
+							args.Player.SendErrorMessage("éœ€è¦ç™»å½•! è¯· {0}register (/æ³¨å†Œ)æˆ– {0}login (/ç™»å½•)å¼€å§‹æ¸¸æˆ!", TShock.Config.CommandSpecifier);
 						}
 						else if (args.Player.IsDisabledPendingTrashRemoval)
 						{
-							args.Player.SendErrorMessage("ÄãĞèÒªÖØĞÂ¼ÓÈëÓÎÏ·ÒÔÈ·±£ÄãµÄÀ¬»øÍ°±»Çå³ı!");
+							args.Player.SendErrorMessage("ä½ éœ€è¦é‡æ–°åŠ å…¥æ¸¸æˆä»¥ç¡®ä¿ä½ çš„åƒåœ¾æ¡¶è¢«æ¸…é™¤!");
 						}
 
 						// ??
