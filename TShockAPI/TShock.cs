@@ -245,7 +245,7 @@ namespace TShockAPI
 				catch (Exception ex)
 				{
 					logPathSetupWarning =
-						"ÅäÖÃÖĞµÄÈÕÖ¾Â·¾¶»òÈÕÖ¾¸ñÊ½ÎŞĞ§, ¹Êµ±Ç°ÎªÄ¬ÈÏÉèÖÃ. Òì³£ĞÅÏ¢:\n" + ex;
+						"é…ç½®ä¸­çš„æ—¥å¿—è·¯å¾„æˆ–æ—¥å¿—æ ¼å¼æ— æ•ˆ, æ•…å½“å‰ä¸ºé»˜è®¤è®¾ç½®. å¼‚å¸¸ä¿¡æ¯:\n" + ex;
 
 					ServerApi.LogWriter.PluginWriteLine(this, logPathSetupWarning, TraceLevel.Error);
 
@@ -258,7 +258,7 @@ namespace TShockAPI
 			catch (Exception ex)
 			{
 				// Will be handled by the server api and written to its crashlog.txt.
-				throw new Exception("TShock³õÊ¼»¯¹ı³Ì³öÏÖÖÂÃüÒì³£. ²é¿´×ÓÒì³£ĞÅÏ¢»ñµÃ¸ü¶àËµÃ÷.", ex);
+				throw new Exception("TShockåˆå§‹åŒ–è¿‡ç¨‹å‡ºç°è‡´å‘½å¼‚å¸¸. æŸ¥çœ‹å­å¼‚å¸¸ä¿¡æ¯è·å¾—æ›´å¤šè¯´æ˜.", ex);
 			}
 
 			// Further exceptions are written to TShock's log from now on.
@@ -304,7 +304,7 @@ namespace TShockAPI
 				if (File.Exists(Path.Combine(SavePath, "tshock.pid")))
 				{
 					Log.ConsoleInfo(
-						"TShockÉÏ´ÎÎ´Õı³£¹Ø±Õ. ÏÂ´Î×¢ÒâÓÃ¹Ø·şÖ¸Áî¹Ø±Õ.");
+						"TShockä¸Šæ¬¡æœªæ­£å¸¸å…³é—­. ä¸‹æ¬¡æ³¨æ„ç”¨å…³æœæŒ‡ä»¤å…³é—­.");
 					File.Delete(Path.Combine(SavePath, "tshock.pid"));
 				}
 				File.WriteAllText(Path.Combine(SavePath, "tshock.pid"),
@@ -374,20 +374,20 @@ namespace TShockAPI
 				if (Config.RestApiEnabled)
 					RestApi.Start();
 
-				Log.ConsoleInfo("×Ô¶¯±£´æ - " + (Config.AutoSave ? "ÆôÓÃ" : "¹Ø±Õ"));
-				Log.ConsoleInfo("¶¨Ê±±¸·İ - " + (Backups.Interval > 0 ? "ÆôÓÃ" : "¹Ø±Õ"));
+				Log.ConsoleInfo("è‡ªåŠ¨ä¿å­˜ - " + (Config.AutoSave ? "å¯ç”¨" : "å…³é—­"));
+				Log.ConsoleInfo("å®šæ—¶å¤‡ä»½ - " + (Backups.Interval > 0 ? "å¯ç”¨" : "å…³é—­"));
 
 				if (Initialized != null)
 					Initialized();
 
-				Log.ConsoleInfo("»¶Ó­Ê¹ÓÃTShock£¡");
+				Log.ConsoleInfo("æ¬¢è¿ä½¿ç”¨TShockï¼");
 				Log.ConsoleInfo("TShock comes with no warranty & is free software.");
-				Log.ConsoleInfo("Äã¿ÉÒÔÔÚGNU GPLv3Ğí¿ÉÖ¤ÏÂĞŞ¸Ä»ò·¢ĞĞ.");
+				Log.ConsoleInfo("ä½ å¯ä»¥åœ¨GNU GPLv3è®¸å¯è¯ä¸‹ä¿®æ”¹æˆ–å‘è¡Œ.");
 
 			}
 			catch (Exception ex)
 			{
-				Log.Error("ÖÂÃüµÄ³õÊ¼»¯Òì³£¡£");
+				Log.Error("è‡´å‘½çš„åˆå§‹åŒ–å¼‚å¸¸ã€‚");
 				Log.Error(ex.ToString());
 				Environment.Exit(1);
 			}
@@ -493,12 +493,12 @@ namespace TShockAPI
 				// And then get rid of them.
 				if (potentialBan.Expiration == "")
 				{
-					args.Player.Kick(String.Format("±»{0}ÓÀ¾Ã·â½û£º{1}", potentialBan.BanningUser
+					args.Player.Kick(String.Format("è¢«{0}æ°¸ä¹…å°ç¦ï¼š{1}", potentialBan.BanningUser
 						,potentialBan.Reason), true, true);
 				}
 				else
 				{
-					args.Player.Kick(String.Format("±»{0}ÔİÊ±·â½û£º{1}", potentialBan.BanningUser,
+					args.Player.Kick(String.Format("è¢«{0}æš‚æ—¶å°ç¦ï¼š{1}", potentialBan.BanningUser,
 						potentialBan.Reason), true, true);
 				}
 			}
@@ -849,8 +849,8 @@ namespace TShockAPI
 
 				if (File.Exists(Path.Combine(SavePath, "setup-code.txt")))
 				{
-					Log.ConsoleInfo("ÄúÒÑÉè¶¨¹ÜÀíÔ±ÓÃ»§£»ÏµÍ³½«½ûÓÃ³õ´ÎÅäÖÃ¹¦ÄÜ¡£");
-					Log.ConsoleInfo("³õ´ÎÅäÖÃÎÄ¼ş setup-code.txt ½«»á±»É¾³ı¡£");
+					Log.ConsoleInfo("æ‚¨å·²è®¾å®šç®¡ç†å‘˜ç”¨æˆ·ï¼›ç³»ç»Ÿå°†ç¦ç”¨åˆæ¬¡é…ç½®åŠŸèƒ½ã€‚");
+					Log.ConsoleInfo("åˆæ¬¡é…ç½®æ–‡ä»¶ setup-code.txt å°†ä¼šè¢«åˆ é™¤ã€‚");
 					File.Delete(Path.Combine(SavePath, "setup-code.txt"));
 				}
 
@@ -865,8 +865,8 @@ namespace TShockAPI
 				var r = new Random((int)DateTime.Now.ToBinary());
 				SetupToken = r.Next(100000, 10000000);
 				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.WriteLine("½øÈëÓÎÏ·ºóÊ¹ÓÃ {0}setup {1} ÒÔÉè¶¨·şÎñÆ÷¡£", Commands.Specifier, SetupToken);
-				Console.WriteLine("·şÎñÆ÷Éè¶¨Íê±Ïºó£¬±¾ÌáÊ¾»áÒş²Ø¡£ ({0}setup)", Commands.Specifier);
+				Console.WriteLine("è¿›å…¥æ¸¸æˆåä½¿ç”¨ {0}setup {1} ä»¥è®¾å®šæœåŠ¡å™¨ã€‚", Commands.Specifier, SetupToken);
+				Console.WriteLine("æœåŠ¡å™¨è®¾å®šå®Œæ¯•åï¼Œæœ¬æç¤ºä¼šéšè—ã€‚ ({0}setup)", Commands.Specifier);
 				Console.ResetColor();
 				File.WriteAllText(Path.Combine(SavePath, "setup-code.txt"), SetupToken.ToString());
 			}
@@ -874,9 +874,9 @@ namespace TShockAPI
 			{
 				SetupToken = Convert.ToInt32(File.ReadAllText(Path.Combine(SavePath, "setup-code.txt")));
 				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.WriteLine("³õÊ¼ÅäÖÃ setup-code.txt ÖĞµÄÃÜÂëÒÑ¾­ÉúĞ§¡£");
-				Console.WriteLine("½øÈëÓÎÏ·ºóÊ¹ÓÃ {0}setup {1} ÒÔÉè¶¨·şÎñÆ÷¡£", Commands.Specifier, SetupToken);
-				Console.WriteLine("·şÎñÆ÷Éè¶¨Íê±Ïºó£¬±¾ÌáÊ¾»áÒş²Ø¡£ ({0}setup)", Commands.Specifier);
+				Console.WriteLine("åˆå§‹é…ç½® setup-code.txt ä¸­çš„å¯†ç å·²ç»ç”Ÿæ•ˆã€‚");
+				Console.WriteLine("è¿›å…¥æ¸¸æˆåä½¿ç”¨ {0}setup {1} ä»¥è®¾å®šæœåŠ¡å™¨ã€‚", Commands.Specifier, SetupToken);
+				Console.WriteLine("æœåŠ¡å™¨è®¾å®šå®Œæ¯•åï¼Œæœ¬æç¤ºä¼šéšè—ã€‚ ({0}setup)", Commands.Specifier);
 				Console.ResetColor();
 			}
 
@@ -954,7 +954,7 @@ namespace TShockAPI
 					{
 						if (player.TileKillThreshold >= Config.TileKillThreshold)
 						{
-							player.Disable("´ïµ½ÆÆ»µÎï¿éËÙÂÊÉÏÏŞ.", flags);
+							player.Disable("è¾¾åˆ°ç ´åç‰©å—é€Ÿç‡ä¸Šé™.", flags);
 							TSPlayer.Server.RevertTiles(player.TilesDestroyed);
 							player.TilesDestroyed.Clear();
 						}
@@ -971,7 +971,7 @@ namespace TShockAPI
 					{
 						if (player.TilePlaceThreshold >= Config.TilePlaceThreshold)
 						{
-							player.Disable("´ïµ½·ÅÖÃÎï¿éËÙÂÊÉÏÏŞ", flags);
+							player.Disable("è¾¾åˆ°æ”¾ç½®ç‰©å—é€Ÿç‡ä¸Šé™", flags);
 							lock (player.TilesCreated)
 							{
 								TSPlayer.Server.RevertTiles(player.TilesCreated);
@@ -1015,7 +1015,7 @@ namespace TShockAPI
 
 					if (player.TileLiquidThreshold >= Config.TileLiquidThreshold)
 					{
-						player.Disable("´ïµ½·ÅË®ËÙÂÊÉÏÏŞ.", flags);
+						player.Disable("è¾¾åˆ°æ”¾æ°´é€Ÿç‡ä¸Šé™.", flags);
 					}
 					if (player.TileLiquidThreshold > 0)
 					{
@@ -1024,7 +1024,7 @@ namespace TShockAPI
 
 					if (player.ProjectileThreshold >= Config.ProjectileThreshold)
 					{
-						player.Disable("´ïµ½Éú³ÉÅ×ÉäÌåËÙÂÊÉÏÏŞ.", flags);
+						player.Disable("è¾¾åˆ°ç”ŸæˆæŠ›å°„ä½“é€Ÿç‡ä¸Šé™.", flags);
 					}
 					if (player.ProjectileThreshold > 0)
 					{
@@ -1033,7 +1033,7 @@ namespace TShockAPI
 
 					if (player.PaintThreshold >= Config.TilePaintThreshold)
 					{
-						player.Disable("´ïµ½È¾É«ËÙÂÊÉÏÏŞ.", flags);
+						player.Disable("è¾¾åˆ°æŸ“è‰²é€Ÿç‡ä¸Šé™.", flags);
 					}
 					if (player.PaintThreshold > 0)
 					{
@@ -1042,7 +1042,7 @@ namespace TShockAPI
 
 					if (player.HealOtherThreshold >= TShock.Config.HealOtherThreshold)
 					{
-						player.Disable("´ïµ½Íæ¼ÒÖÎÁÆÉÏÏŞ.", flags);
+						player.Disable("è¾¾åˆ°ç©å®¶æ²»ç–—ä¸Šé™.", flags);
 					}
 					if (player.HealOtherThreshold > 0)
 					{
@@ -1146,7 +1146,7 @@ namespace TShockAPI
 		{
 			if (ShuttingDown)
 			{
-				NetMessage.SendData((int)PacketTypes.Disconnect, args.Who, -1, NetworkText.FromLiteral("·şÎñÆ÷ÕıÔÚ¹Ø±Õ¡­"));
+				NetMessage.SendData((int)PacketTypes.Disconnect, args.Who, -1, NetworkText.FromLiteral("æœåŠ¡å™¨æ­£åœ¨å…³é—­â€¦"));
 				args.Handled = true;
 				return;
 			}
@@ -1175,7 +1175,7 @@ namespace TShockAPI
 				{
 					if (Config.KickProxyUsers)
 					{
-						player.Kick("²»ÔÊĞíÊ¹ÓÃ´úÀí¡£", true, true, null, false);
+						player.Kick("ä¸å…è®¸ä½¿ç”¨ä»£ç†ã€‚", true, true, null, false);
 						args.Handled = true;
 						return;
 					}
@@ -1197,7 +1197,7 @@ namespace TShockAPI
 
 			if (Config.KickEmptyUUID && String.IsNullOrWhiteSpace(player.UUID))
 			{
-				player.Kick("ÄúµÄÓÎÏ··¢ËÍÁËÎŞĞ§µÄUUID¡£", true, true, null, false);
+				player.Kick("æ‚¨çš„æ¸¸æˆå‘é€äº†æ— æ•ˆçš„UUIDã€‚", true, true, null, false);
 				args.Handled = true;
 				return;
 			}
@@ -1227,7 +1227,7 @@ namespace TShockAPI
 					DateTime exp;
 					if (!DateTime.TryParse(ban.Expiration, out exp))
 					{
-						player.Disconnect("ÄúÒò" + ban.Reason + "±»ÓÀ¾Ã·â½û¡£");
+						player.Disconnect("æ‚¨å› " + ban.Reason + "è¢«æ°¸ä¹…å°ç¦ã€‚");
 					}
 					else
 					{
@@ -1235,22 +1235,22 @@ namespace TShockAPI
 						int months = ts.Days / 30;
 						if (months > 0)
 						{
-							player.Disconnect(String.Format("Äã±»ÁÙÊ±·â½û. ½â·âÊ±³¤: {0} month{1} and {2} day{3}: {4}",
+							player.Disconnect(String.Format("ä½ è¢«ä¸´æ—¶å°ç¦. è§£å°æ—¶é•¿: {0} month{1} and {2} day{3}: {4}",
 								months, months == 1 ? "" : "s", ts.Days, ts.Days == 1 ? "" : "s", ban.Reason));
 						}
 						else if (ts.Days > 0)
 						{
-							player.Disconnect(String.Format("Äã±»ÁÙÊ±·â½û. ½â·âÊ±³¤: {0} day{1} and {2} hour{3}: {4}",
+							player.Disconnect(String.Format("ä½ è¢«ä¸´æ—¶å°ç¦. è§£å°æ—¶é•¿: {0} day{1} and {2} hour{3}: {4}",
 								ts.Days, ts.Days == 1 ? "" : "s", ts.Hours, ts.Hours == 1 ? "" : "s", ban.Reason));
 						}
 						else if (ts.Hours > 0)
 						{
-							player.Disconnect(String.Format("Äã±»ÁÙÊ±·â½û. ½â·âÊ±³¤: {0} hour{1} and {2} minute{3}: {4}",
+							player.Disconnect(String.Format("ä½ è¢«ä¸´æ—¶å°ç¦. è§£å°æ—¶é•¿: {0} hour{1} and {2} minute{3}: {4}",
 								ts.Hours, ts.Hours == 1 ? "" : "s", ts.Minutes, ts.Minutes == 1 ? "" : "s", ban.Reason));
 						}
 						else if (ts.Minutes > 0)
 						{
-							player.Disconnect(String.Format("Äã±»ÁÙÊ±·â½û. ½â·âÊ±³¤: {0} minute{1} and {2} second{3}: {4}",
+							player.Disconnect(String.Format("ä½ è¢«ä¸´æ—¶å°ç¦. è§£å°æ—¶é•¿: {0} minute{1} and {2} second{3}: {4}",
 								ts.Minutes, ts.Minutes == 1 ? "" : "s", ts.Seconds, ts.Seconds == 1 ? "" : "s", ban.Reason));
 						}
 						else
@@ -1285,8 +1285,8 @@ namespace TShockAPI
 			if (tsplr.ReceivedInfo)
 			{
 				if (!tsplr.SilentKickInProgress && tsplr.State >= 3)
-					Utils.Broadcast(tsplr.Name + " Àë¿ªÓÎÏ·.", Color.Yellow);
-				Log.Info("{0} ¶Ï¿ªÁ¬½Ó.", tsplr.Name);
+					Utils.Broadcast(tsplr.Name + " ç¦»å¼€æ¸¸æˆ.", Color.Yellow);
+				Log.Info("{0} æ–­å¼€è¿æ¥.", tsplr.Name);
 
 				if (tsplr.IsLoggedIn && !tsplr.IsDisabledPendingTrashRemoval && Main.ServerSideCharacter && (!tsplr.Dead || tsplr.TPlayer.difficulty != 2))
 				{
@@ -1336,7 +1336,7 @@ namespace TShockAPI
 
 			if (args.Text.Length > 500)
 			{
-				tsplr.Kick("ÊÔÍ¼·¢ËÍ³¤ÁÄÌìÓï¾äÆÆ»µ·şÎñÆ÷¡£", true);
+				tsplr.Kick("è¯•å›¾å‘é€é•¿èŠå¤©è¯­å¥ç ´åæœåŠ¡å™¨ã€‚", true);
 				args.Handled = true;
 				return;
 			}
@@ -1371,13 +1371,13 @@ namespace TShockAPI
 					if (!Commands.HandleCommand(tsplr, text))
 					{
 						// This is required in case anyone makes HandleCommand return false again
-						tsplr.SendErrorMessage("ÎŞ·¨Ê¶±ğÖ¸Áî. ÇëÁªÏµ¹ÜÀíÔ±ÒÔÑ°Çó°ïÖú.");
-						Log.ConsoleError("ÎŞ·¨Ê¶±ğÖ¸ÁîÎÄ±¾ '{0}' (Íæ¼Ò: {1}).", text, tsplr.Name);
+						tsplr.SendErrorMessage("æ— æ³•è¯†åˆ«æŒ‡ä»¤. è¯·è”ç³»ç®¡ç†å‘˜ä»¥å¯»æ±‚å¸®åŠ©.");
+						Log.ConsoleError("æ— æ³•è¯†åˆ«æŒ‡ä»¤æ–‡æœ¬ '{0}' (ç©å®¶: {1}).", text, tsplr.Name);
 					}
 				}
 				catch (Exception ex)
 				{
-					Log.ConsoleError("Ö´ĞĞÖ¸ÁîÊ±³öÏÖÒì³£.");
+					Log.ConsoleError("æ‰§è¡ŒæŒ‡ä»¤æ—¶å‡ºç°å¼‚å¸¸.");
 					Log.Error(ex.ToString());
 				}
 			}
@@ -1389,7 +1389,7 @@ namespace TShockAPI
 				}
 				else if (tsplr.mute)
 				{
-					tsplr.SendErrorMessage("Äã´¦ÓÚ½ûÑÔ×´Ì¬, ÎŞ·¨·¢ËÍÏûÏ¢.");
+					tsplr.SendErrorMessage("ä½ å¤„äºç¦è¨€çŠ¶æ€, æ— æ³•å‘é€æ¶ˆæ¯.");
 					args.Handled = true;
 				}
 				else if (!TShock.Config.EnableChatAboveHeads)
@@ -1431,7 +1431,7 @@ namespace TShockAPI
 					//Send the original sender their nicely formatted message, and do all the loggy things
 					tsplr.SendMessage(msg, tsplr.Group.R, tsplr.Group.G, tsplr.Group.B);
 					TSPlayer.Server.SendMessage(msg, tsplr.Group.R, tsplr.Group.G, tsplr.Group.B);
-					Log.Info("ÏûÏ¢: {0}", msg);
+					Log.Info("æ¶ˆæ¯: {0}", msg);
 					args.Handled = true;
 				}
 			}
@@ -1461,7 +1461,7 @@ namespace TShockAPI
 			if (args.Command == "autosave")
 			{
 				Main.autoSave = Config.AutoSave = !Config.AutoSave;
-				Log.ConsoleInfo((Config.AutoSave ? "¿ªÆô" : "¹Ø±Õ") + "×Ô¶¯±£´æ¡£");
+				Log.ConsoleInfo((Config.AutoSave ? "å¼€å¯" : "å…³é—­") + "è‡ªåŠ¨ä¿å­˜ã€‚");
 			}
 			else if (args.Command.StartsWith(Commands.Specifier) || args.Command.StartsWith(Commands.SilentSpecifier))
 			{
@@ -1532,22 +1532,22 @@ namespace TShockAPI
 
 			if (Config.EnableGeoIP && TShock.Geo != null)
 			{
-				Log.Info("{0} ({1}) [×é:{2}] ´Ó {3} ¼ÓÈë. ({4}/{5})", player.Name, player.IP,
+				Log.Info("{0} ({1}) [ç»„:{2}] ä» {3} åŠ å…¥. ({4}/{5})", player.Name, player.IP,
 									   player.Group.Name, player.Country, TShock.Utils.GetActivePlayerCount(),
 									   TShock.Config.MaxSlots);
 				if (!player.SilentJoinInProgress)
-					Utils.Broadcast(string.Format("{0} ({1}) ¼ÓÈëÓÎÏ·.", player.Name, player.Country), Color.Yellow);
+					Utils.Broadcast(string.Format("{0} ({1}) åŠ å…¥æ¸¸æˆ.", player.Name, player.Country), Color.Yellow);
 			}
 			else
 			{
 				Log.Info("{0} ({1}) from '{2}' group joined. ({3}/{4})", player.Name, player.IP,
 									   player.Group.Name, TShock.Utils.GetActivePlayerCount(), TShock.Config.MaxSlots);
 				if (!player.SilentJoinInProgress)
-					Utils.Broadcast(player.Name + " ¼ÓÈëÓÎÏ·.", Color.Yellow);
+					Utils.Broadcast(player.Name + " åŠ å…¥æ¸¸æˆ.", Color.Yellow);
 			}
 
 			if (Config.DisplayIPToAdmins)
-				Utils.SendLogs(string.Format("{0} ¼ÓÈëÓÎÏ·. IP: {1}", player.Name, player.IP), Color.Blue);
+				Utils.SendLogs(string.Format("{0} åŠ å…¥æ¸¸æˆ. IP: {1}", player.Name, player.IP), Color.Blue);
 
 			player.SendFileTextAsMessage(FileTools.MotdPath);
 
@@ -1564,12 +1564,12 @@ namespace TShockAPI
 				if (Main.ServerSideCharacter)
 				{
 					player.IsDisabledForSSC = true;
-					player.SendErrorMessage(String.Format("ÄúÒÑ¼ÓÈëÔÆ¶Ë´æµµ·şÎñÆ÷£»ÇëÊ¹ÓÃ {0}register »ò {0}login ¼ÓÈëÓÎÏ·£¡", Commands.Specifier));
+					player.SendErrorMessage(String.Format("æ‚¨å·²åŠ å…¥äº‘ç«¯å­˜æ¡£æœåŠ¡å™¨ï¼›è¯·ä½¿ç”¨ {0}register æˆ– {0}login åŠ å…¥æ¸¸æˆï¼", Commands.Specifier));
 					player.LoginHarassed = true;
 				}
 				else if (Config.RequireLogin)
 				{
-					player.SendErrorMessage("ÇëÊ¹ÓÃ {0}register »ò {0}login ¼ÓÈëÓÎÏ·£¡", Commands.Specifier);
+					player.SendErrorMessage("è¯·ä½¿ç”¨ {0}register æˆ– {0}login åŠ å…¥æ¸¸æˆï¼", Commands.Specifier);
 					player.LoginHarassed = true;
 				}
 			}
@@ -1579,7 +1579,7 @@ namespace TShockAPI
 			if (Config.RememberLeavePos && (RememberedPos.GetLeavePos(player.Name, player.IP) != Vector2.Zero) && !player.LoginHarassed)
 			{
 				player.RPPending = 3;
-				player.SendInfoMessage("Äã»á±»´«ËÍµ½ÉÏ´ÎÀë¿ªÓÎÏ·Ê±ÄãËùÔÚÎ»ÖÃ.");
+				player.SendInfoMessage("ä½ ä¼šè¢«ä¼ é€åˆ°ä¸Šæ¬¡ç¦»å¼€æ¸¸æˆæ—¶ä½ æ‰€åœ¨ä½ç½®.");
 			}
 
 			args.Handled = true;
